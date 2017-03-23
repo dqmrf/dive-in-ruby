@@ -1,5 +1,4 @@
 # Ex 1
-
 a = 5
 
 res = case a
