@@ -1,13 +1,12 @@
-# Ex 1
+# Example: 1
 a = 5
-
 res = case a
       when 1..10
         'low'
       when 10..20
         'middle'
-      else 
+      else
         'high'
       end
 
-puts res
+puts res #=> low

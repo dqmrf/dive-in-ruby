@@ -1,11 +1,12 @@
-# Ex 3
+# Example: 1
 def test(&block)
   block.call
 end
 
-test { puts "Hello world!" }
+test { puts "Hello world!\n\r" } #=> Hello world!
 
-# Ex 2
+
+# Example: 2
 def test
   yield 5
   puts "You're in the method test"
@@ -13,8 +14,15 @@ def test
 end
 
 test { |i| puts "You are in the block #{i}"}
+print "\n"
+=begin
+You are in the block 5
+You're in the method test
+You are in the block 100
+=end
 
-# Ex 1
+
+# Example: 3
 def test
   puts 'You are in the method'
   yield
@@ -23,3 +31,9 @@ def test
 end
 
 test { puts 'You are in the block' }
+=begin
+You are in the method
+You are in the block
+You are again back to the method
+You are in the block
+=end

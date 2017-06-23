@@ -1,21 +1,32 @@
-# Ex 1
+# Example: 1
 document = <<HERE
-This is a 
+This is a
 string literal
 HERE
 
 puts "#{document}\n"
+=begin
+This is a
+string literal
+=end
 
-# Ex 2
+
+# Example: 2
 greet = <<HERE + <<THERE + "World!"
 Hello
 HERE
 There
 THERE
 
-puts greet
+puts "#{greet}\n\r"
+=begin
+Hello
+There
+World!
+=end
 
-# Ex 3
+
+# Example: 3
 app = 'Application'
 document = <<-"# # #" # You can use anything instead of '# # #'
 <!DOCTYPE html>
@@ -29,7 +40,7 @@ document = <<-"# # #" # You can use anything instead of '# # #'
   <body>
     <div id="app">#{app}</div>
   </body>
-  
+
 </html>
 # # #
 
