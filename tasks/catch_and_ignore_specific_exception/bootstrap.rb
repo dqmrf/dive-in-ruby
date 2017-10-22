@@ -31,8 +31,8 @@ class MockStripeHelper
     raise_error
   end
 
-  def safe_call(callback)
-    self.send(callback)
+  def safe_call(method)
+    self.send(method)
   rescue StripeError
     raise
   rescue
