@@ -3,8 +3,6 @@ class PlayingCard
   RANKS = %w{ 2 3 4 5 6 7 8 9 10 J Q K A }
 
   class Deck
-    attr_reader :cards
-
     def initialize(n = 1)
       @cards = []
       SUITS.cycle(n) do |suit|
@@ -13,13 +11,13 @@ class PlayingCard
         end
       end
     end
+
+    def cards
+      @cards.to_enum
+    end
   end
 end
 
-# this command produces a double deck of cards containing two of each card
-# for a total of 104
-deck = PlayingCard::Deck.new(2)
-deck.cards.each {|card| puts card }
-
-deck.cards << 'wtf???'
-p deck.cards.each { } #=> [..., "A of spades", "wtf???"]
+deck = PlayingCard::Deck.new
+p deck.cards.each { }
+deck.cards << 'wtf???' #=> undefined method `<<' for #<Enumerator:0x0055a18dfaad28>
