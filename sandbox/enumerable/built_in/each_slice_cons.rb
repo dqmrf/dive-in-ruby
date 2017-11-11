@@ -2,7 +2,7 @@ require 'pry'
 
 array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-array.each_slisce(3) { |slice| p slice }
+array.each_slice(3) { |slice| p slice }
 =begin
 [1, 2, 3]
 [4, 5, 6]
