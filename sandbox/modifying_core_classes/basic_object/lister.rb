@@ -36,6 +36,11 @@ lister.peoples do |people|
     item.name { 'Pavel' }
     item.age  { '30' }
     item.iq   { '180' }
+
+    item.dog do |animal|
+      animal.age { '7' }
+      animal.iq  { '140' }
+    end
   end
 end
 
@@ -53,6 +58,11 @@ puts lister.list
 #     name:
 #       Pavel
 #     age:
-#       ~30
+#       30
 #     iq:
 #       180
+#     dog:
+#       age:
+#         7
+#       iq:
+#         140
