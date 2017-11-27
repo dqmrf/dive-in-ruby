@@ -23,6 +23,7 @@ module StateHelper
 
         set_error(error)
       end
+      self
     end
 
     def log_error_and_raise(err, *args)
@@ -36,10 +37,6 @@ module StateHelper
       @error = error
       @success = false
     end
-  end
-
-  def state
-    @state ||= State.new
   end
 
 end

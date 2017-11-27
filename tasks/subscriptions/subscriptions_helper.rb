@@ -9,8 +9,13 @@ module SubscriptionsHelper
     def charge_and_subscribe
       create_subscription
       raise MyError.new('Error inside :charge_and_subscribe method!')
+      state
     rescue => e
       state.log_error(e)
+    end
+
+    def state
+      @state ||= State.new
     end
 
     private
