@@ -9,7 +9,7 @@ class Bootstrap
 
   def charge
     subscriber = MembershipSubscriber.new
-    p subscriber.charge_and_subscribe.success?
+    subscriber.charge_and_subscribe
     p subscriber.state.success?
     p subscriber.state.error
   end

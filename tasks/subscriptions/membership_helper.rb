@@ -7,13 +7,11 @@ module MembershipHelper
 
   class MembershipSubscriber < Subscriber
     def charge_and_subscribe
-      if super.success?
+      if super && state.success?
         puts 'Extra code in :charge_and_subscribe method.'
       end
 
       raise MyError.new('Error inside overridden :charge_and_subscribe method!')
-
-      state
     rescue => e
       state.log_error(e)
     end

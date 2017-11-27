@@ -1,14 +1,14 @@
 module StateHelper
 
-  def state
-    @state ||= State.new
-  end
-
   class State
     attr_reader :error
 
     def initialize
       @success = true
+    end
+
+    def success?
+      @success
     end
 
     def log_error(err = nil, options = {})
@@ -23,7 +23,6 @@ module StateHelper
 
         set_error(error)
       end
-      self
     end
 
     def log_error_and_raise(err, *args)
@@ -31,14 +30,16 @@ module StateHelper
       raise err
     end
 
+    private
+
     def set_error(error)
       @error = error
       @success = false
     end
+  end
 
-    def success?
-      @success
-    end
+  def state
+    @state ||= State.new
   end
 
 end
