@@ -1,0 +1,39 @@
+require 'observer'
+
+class Employee
+  include Observable
+  attr_reader :name, :title, :salary
+
+  def initialize(name, title, salary)
+    super()
+    @name = name
+    @title = title
+    @salary = salary
+  end
+
+  def salary=(new_salary)
+    @salary = new_salary
+    changed
+    notify_observers(self)
+  end
+end
+
+class Payroll
+  def update(changed_employee)
+    puts("Cut a new check for #{changed_employee.name}!")
+    puts("His salary is now #{changed_employee.salary}!")
+  end
+end
+
+class TaxMan
+  def update( changed_employee )
+    puts("Send #{changed_employee.name} a new tax bill!")
+  end
+end
+
+leo = Employee.new('Leonardo', 'Programmer', '2000')
+payroll = Payroll.new
+tax_man = TaxMan.new
+leo.add_observer(payroll)
+leo.add_observer(tax_man)
+leo.salary = 2500
