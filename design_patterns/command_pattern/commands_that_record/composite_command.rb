@@ -7,6 +7,10 @@ class CompositeCommand < Command
     @commands << cmd
   end
 
+  def execute
+    @commands.each {|cmd| cmd.execute}
+  end
+
   def description
     description = ''
     @commands.each {|cmd| description += cmd.description + "\n"}
