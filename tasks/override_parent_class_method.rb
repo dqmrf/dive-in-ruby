@@ -15,7 +15,7 @@ class Bar < Foo
       def method_missing(name)
         name.to_s.match(/[a-z]+(?=\?$)/) do |match|
           return self.any? do |role|
-            role[:name].to_s == match[0]
+            role[:name].to_s.eql?(match[0])
           end
         end
         super
