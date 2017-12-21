@@ -12,13 +12,13 @@ end
 class Bar < Foo
   def roles
     class << roles = super
-      def method_missing(name, *args)
-        name = name.to_s
-        name.gsub!(/\?$/, '')
-
-        self.any? do |role|
-          role[:name].to_s == name
+      def method_missing(name)
+        name.to_s.match(/[a-z]+(?=\?$)/) do |match|
+          return self.any? do |role|
+            role[:name].to_s == match[0]
+          end
         end
+        super
       end
     end
 
