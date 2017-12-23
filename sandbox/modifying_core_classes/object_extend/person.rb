@@ -5,6 +5,12 @@ module Secretive
   end
 end
 
+module WithTestMethod
+  def test_method
+    'You are inside :test_method!'
+  end
+end
+
 class Person
   attr_accessor :name
 end
@@ -19,6 +25,8 @@ pavel.extend(Secretive)
 puts leo.name   #=> Leonardo
 puts pavel.name #=> [not available]
 
+Person.extend(WithTestMethod)
+puts Person::test_method #=> 'You are inside :test_method!'
 
 # [2]>
 module Makers
